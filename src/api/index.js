@@ -5,7 +5,8 @@ const customFetch = async (url, { body, ...customConfig }) => {
   const token = window.localStorage.getItem(LOCAL_STORAGE_TOKEN_KEY);
 
   const headers = {
-    'content-type': 'application/x-www-form-urlencoded',
+    //'content-type': 'application/x-www-form-urlencoded',
+    'Content-Type': 'application/json'
   };
 
   if (token) {
@@ -21,7 +22,8 @@ const customFetch = async (url, { body, ...customConfig }) => {
   };
 
   if (body) {
-    config.body = getFormBody(body);
+    //config.body = getFormBody(body);
+    config.body =JSON.stringify(body);
   }
 
   try {
@@ -29,15 +31,15 @@ const customFetch = async (url, { body, ...customConfig }) => {
     console.log("url=",url,"config=",config)
     const data = await response.json();
     console.log("========data=======",data);
-    if (data.success) {
+    if (data) {
       return {
-        data: data.data,
+        data:data,
         success: true,
-        message:data.msg
+        // message:"You are successfully Login"
       };
     }
 
-    throw new Error(data.msg);
+    throw new Error(JSON.stringify(data));
   } catch (error) {
     console.error('error');
     return {
