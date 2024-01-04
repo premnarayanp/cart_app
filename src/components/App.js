@@ -22,27 +22,3 @@ function App(){
 
 }
 export default App;
-
-
-// class App extends React.Component{
-
-//   render(){
-//   const Page404=()=>{
-//     return <h1>404</h1>
-//   };
-
-//   return (
-//     <div className="App">
-//         <Navbar />
-
-//         <Routes>
-//            <Route path="/" element={<Home />} />
-//            <Route path="*" element={<Page404/>} />
-//       </Routes>
-      
-//     </div>
-//   );
-// }
-
-// }
-// export default App;
