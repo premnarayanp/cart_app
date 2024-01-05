@@ -69,3 +69,9 @@ export const allProducts = async () => {
     method: 'GET',
   });
 };
+
+export const searchProduct = async (searchText) => {
+  return customFetch(API_URLS.searchProduct(searchText), {
+    method: 'GET',
+  });
+};

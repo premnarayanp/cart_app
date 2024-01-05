@@ -80,6 +80,11 @@
     margin-left: 5px;
 }
 
+.product_count span {
+    color: blue;
+    font-weight: 500;
+}
+
 
 /* .plus_symbol {
     border-radius: 10px;

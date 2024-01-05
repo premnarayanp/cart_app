@@ -1,28 +1,36 @@
 import '../../styles/homeNavbar.css';
 import { useState } from 'react';
+import {searchProduct} from '../../api/index';
+import {addProductsList} from '../../actions/productsActionCreator';
+import { useToasts } from 'react-toast-notifications';
+import { connect } from 'react-redux';
 
-export default function HomeNavbar(props){
- const {dispatch}=props;
+function HomeNavbar(props){
+ const {dispatch,productList}=props;
+ //const [productCount,setProductCount]=useState(0);
  const [searchText,setSearchText]=useState("");
  const [searchType,setSearchType]=useState("Select Types");
+
+ const { addToast } = useToasts();
 
    const handleAddProduct=()=>{
     //  dispatch(showProductForm(true,false));
    }
   const handleSearchClick= async()=>{
-      //const response= await searchProduct(searchText,searchType);
-      // if (response.success && response.data) {
-      //   dispatch(productList(response.data.productList));
-      //   setSearchText("")
-      //   addToast(`$(response.data.productList.length+" Product records found")`, {
-      //     appearance: 'success',
-      //   });
+      const response= await searchProduct(searchText);
+      if (response.success && response.data) {
+        dispatch(addProductsList(response.data.products));
+        setSearchText("")
+        // setProductCount(response.data.products.length)
+        addToast(`${response.data.products.length+" Product records found"}`, {
+          appearance: 'success',
+        });
 
-      // } else {
-      //   addToast(response.message, {
-      //     appearance: 'error',
-      //   });
-      // }
+      } else {
+        addToast(response.message, {
+          appearance: 'error',
+        });
+      }
   }
   
   return(
@@ -33,19 +41,32 @@ export default function HomeNavbar(props){
       <select className="search_type" id='search_types' value={searchType} onChange={(e)=>setSearchType(e.target.value)} >
         <option>Select Types</option>
         <option>All</option>
-        <option>Roll</option>
-        <option>Position</option>
         <option>Name</option>
-        <option>User Id</option>
+        <option>Id</option>
       </select>
 
       <button className="search_btn" onClick={handleSearchClick}><img src={require('../../assets/serch_icon 3.png')} alt='si'/></button>  
     </div>
         
+    <div className='product_count'>
+       <span>Total Products:- </span>
+       <span>{productList.length}</span>
+    </div>
+
     <button className='addProductBtn' onClick={handleAddProduct}>
       <span className='plus_symbol'>+</span>
-      <span>Create User</span>
+      <span>Add Product</span>
     </button>
   </div>
   )
 }
+
+//==============================connect=================================
+function mapStateToProps(state){
+  const products=state.products;
+  return{
+    productList:products.productList,
+  }
+}
+const connectedHomeNavbarComponent=connect(mapStateToProps)(HomeNavbar);
+export default connectedHomeNavbarComponent;
