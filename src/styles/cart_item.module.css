@@ -23,7 +23,7 @@
 
 .aboutProduct {
     background-color: bisque;
-    border-top: solid 1px gray;
+    /* border-top: solid 1px gray; */
     display: flex;
     align-items: center;
     justify-content: space-between;

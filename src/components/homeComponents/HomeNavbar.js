@@ -1,12 +1,13 @@
 import '../../styles/homeNavbar.css';
 import { useState } from 'react';
 import {searchProduct} from '../../api/index';
-import {addProductsList} from '../../actions/productsActionCreator';
+import {addProductsList,showProductForm} from '../../actions/productsActionCreator';
 import { useToasts } from 'react-toast-notifications';
 import { connect } from 'react-redux';
+import {ProductForm} from './index';
 
 function HomeNavbar(props){
- const {dispatch,productList}=props;
+ const {dispatch,productList,isShowProductForm}=props;
  //const [productCount,setProductCount]=useState(0);
  const [searchText,setSearchText]=useState("");
  const [searchType,setSearchType]=useState("Select Types");
@@ -14,8 +15,9 @@ function HomeNavbar(props){
  const { addToast } = useToasts();
 
    const handleAddProduct=()=>{
-    //  dispatch(showProductForm(true,false));
+    dispatch(showProductForm(true,false));
    }
+
   const handleSearchClick= async()=>{
       const response= await searchProduct(searchText);
       if (response.success && response.data) {
@@ -57,6 +59,10 @@ function HomeNavbar(props){
       <span className='plus_symbol'>+</span>
       <span>Add Product</span>
     </button>
+
+    {
+      isShowProductForm && <ProductForm/> 
+    }
   </div>
   )
 }
@@ -66,6 +72,7 @@ function mapStateToProps(state){
   const products=state.products;
   return{
     productList:products.productList,
+    isShowProductForm:products.isShowProductForm
   }
 }
 const connectedHomeNavbarComponent=connect(mapStateToProps)(HomeNavbar);

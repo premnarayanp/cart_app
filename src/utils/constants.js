@@ -6,6 +6,8 @@ export const API_URLS = {
   signup: () => `${API_ROOT}/auth/login`,
   allProducts:()=>`${API_ROOT}/products`,
   searchProduct:(searchBy)=>`${API_ROOT}/products/search?q=${searchBy}`,
+  addProduct:()=>`${API_ROOT}/products/add`,
+  updateProduct:(id)=>`${API_ROOT}/products/${id}`,
 };
 
 export const LOCAL_STORAGE_TOKEN_KEY = '__MY_CART_APP_TOKEN__';

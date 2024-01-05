@@ -2,12 +2,16 @@ import { connect } from 'react-redux';
 import styles from '../../styles/cart.module.css';
 import {CartItem} from './index'
 function Cart(props){
-  const {productList}=props;
+  const {productList,dispatch}=props;
    return(
     <div className={styles.Cart}>
         {
           productList.map((product,index)=>{
-             return <CartItem product={product}/>
+             return <CartItem 
+              product={product}
+              dispatch={dispatch}
+              key={`product-${index}`}
+              />
           })
         }
     </div>

@@ -75,3 +75,17 @@ export const searchProduct = async (searchText) => {
     method: 'GET',
   });
 };
+
+export const addProduct = async (product) => {
+  return customFetch(API_URLS.addProduct(), {
+    method: 'POST',
+    body: product,
+  });
+};
+
+export const updateProduct = async (product,id) => {
+  return customFetch(API_URLS.updateProduct(id), {
+    method: 'PUT',
+    body: product,
+  });
+};
