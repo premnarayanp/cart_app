@@ -11,7 +11,7 @@ export default function CartItem(props){
     return(
      <div className={styles.CartItem}>
        <div className={styles.productThumbnail}>
-          <img src={product.images[0]} alt='Product'/>
+          <img src={product.thumbnail} alt='Product'/>
        </div>
 
        <div className={styles.aboutProduct}>

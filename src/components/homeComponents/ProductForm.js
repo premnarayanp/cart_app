@@ -112,7 +112,8 @@ const UserForm = (props) => {
 
     const response= await updateProduct(product,currentProductData.id);
     if (response.success && response.data) {
-      
+      dispatch(showProductForm(false));
+      dispatch(updateProductToList(product));
       addToast('User successfully updated', {
         appearance: 'success',
       });
@@ -123,7 +124,6 @@ const UserForm = (props) => {
       });
     }
 
-    dispatch(updateProductToList(product));
     setUpdating(false);
   };
 
