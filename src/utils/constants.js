@@ -5,6 +5,7 @@ export const API_URLS = {
   login: () => `${API_ROOT}/auth/login`,
   signup: () => `${API_ROOT}/auth/login`,
   allProducts:()=>`${API_ROOT}/products`,
+  searchProduct:()=>`${API_ROOT}/products`,
 
 };
 

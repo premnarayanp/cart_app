@@ -1,5 +1,5 @@
 .Cart {
-    height: 80%;
+    height: 90%;
     width: 100%;
     padding: 10px;
     display: flex;
@@ -11,4 +11,6 @@
     overflow-y: scroll;
     overflow-x: hidden;
     box-sizing: border-box;
+    /* border: solid 1px gray;
+    background-color: aliceblue; */
 }

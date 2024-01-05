@@ -1,7 +1,7 @@
 import '../styles/home.css';
 import React, { useEffect } from 'react';
 // import { connect } from 'react-redux';
-import {Cart} from '../components/homeComponents/index';
+import {Cart,HomeNavbar} from '../components/homeComponents/index';
 import {allProducts} from '../api/index'
 import {addProductsList} from '../actions/productsActionCreator';
 
@@ -19,6 +19,7 @@ export default function Home(props){
 
   return (
     <div className="Home">
+      <HomeNavbar/>
       <Cart/>
     </div>
   );
