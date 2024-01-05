@@ -63,3 +63,9 @@ export const signUp = async (name, username, password, confirmPassword) => {
     body: { name, username, password, confirmPassword: confirmPassword },
   });
 };
+
+export const allProducts = async () => {
+  return customFetch(API_URLS.allProducts(), {
+    method: 'GET',
+  });
+};

@@ -4,7 +4,7 @@ export const API_URLS = {
   //API URL for User
   login: () => `${API_ROOT}/auth/login`,
   signup: () => `${API_ROOT}/auth/login`,
-
+  allProducts:()=>`${API_ROOT}/products`,
 
 };
 

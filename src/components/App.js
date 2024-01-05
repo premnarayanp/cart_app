@@ -25,7 +25,7 @@ function App(props){
           <Navbar/>
            
           <Routes>
-             <Route path="/" element={ <PrivateRoute> <Home /> </PrivateRoute>}/>
+             <Route path="/" element={ <PrivateRoute> <Home dispatch={dispatch} /> </PrivateRoute>}/>
              <Route exact path="/users/login" element={<Login auth={auth} dispatch={dispatch} />} />
              <Route exact path="/users/signup" element={<Signup auth={auth} dispatch={dispatch} />} /> 
              <Route path="*" element={<Page404 />} />
