@@ -1,0 +1,17 @@
+.displayBlock {
+    height: 91%;
+    width: 90%;
+    min-width: 300px;
+    display: block;
+    position: fixed;
+    top: 8%;
+    right: 50px;
+    left: 100px;
+    z-index: 1500;
+    /* background-color: rgb(253, 241, 237); */
+    background-color: lightcyan
+}
+
+.displayNone {
+    display: none;
+}
