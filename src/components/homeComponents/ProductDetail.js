@@ -37,7 +37,9 @@ function ProductDetail(props){
         }
 
         <div className='table-container'>
-          <table class="product_info_table">
+          {
+            currentProductData &&
+            <table class="product_info_table">
             <thead>
               <tr>
                 <th>S No.</th>
@@ -57,6 +59,7 @@ function ProductDetail(props){
               <tr> <td>08</td>  <td>Stock</td>  <td>{currentProductData.stock}</td> </tr>
             </tbody>
           </table>
+          }
         </div>   
       </main>
     </div>
